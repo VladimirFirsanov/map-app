@@ -1,16 +1,15 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { MapsManagerService, SceneMode, ViewerConfiguration } from 'angular-cesium';
+import { CesiumService, MapEventsManagerService, MapsManagerService, SceneMode, ViewerConfiguration } from 'angular-cesium';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ViewerConfiguration],
+  providers : [ViewerConfiguration, MapEventsManagerService, CesiumService],
 })
 export class AppComponent implements AfterViewInit {
-  title = 'map-app';
 
-  maps = [
+  public maps = [
     {
       id: 'map-first',
       sceneMode: SceneMode.PERFORMANCE_SCENE2D,
@@ -38,15 +37,27 @@ export class AppComponent implements AfterViewInit {
     private mapsManagerService: MapsManagerService,
   ) {
 
-    viewerConf.viewerOptions = [];
+    viewerConf.viewerOptions = {
+      selectionIndicator: false,
+      timeline: false,
+      infoBox: false,
+      fullscreenButton: false,
+      baseLayerPicker: false,
+      animation: false,
+      shouldAnimate: false,
+      homeButton: false,
+      geocoder: false,
+      navigationHelpButton: false,
+      navigationInstructionsInitiallyVisible: false,
+    };
   }
 
   ngAfterViewInit(): void {
     this.mapsManagerService.sync2DMapsCameras([
-      {id: 'map-first'},
-      {id: 'map-second'},
-      {id: 'map-third'},
-      {id: 'map-forth'},
+      {id: 'map-first', bindZoom: true},
+      {id: 'map-second', bindZoom: true},
+      {id: 'map-third', bindZoom: true},
+      {id: 'map-forth', bindZoom: true},
     ]);
   }
 }

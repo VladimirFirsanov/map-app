@@ -1,0 +1,22 @@
+.map {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    border: 5px solid rgb(57, 122, 228);
+    border-radius: 40px;
+    overflow: hidden;
+
+    .side {
+        width: 40px;
+        background-color: rgba(57, 122, 228, .5);
+    }
+
+    &.active {
+        border-color: red;
+        .side {
+            background-color: rgba(255, 0, 0, .5);
+        }
+    }
+}

@@ -1,36 +1,3 @@
-<div class="flex">
-  <div class="row">
-    <div class="map" id="first-map-container">
-      <ac-map 
-        [mapId]="maps[0].id"
-        [sceneMode]="maps[0].sceneMode"
-        [containerId]="maps[0].containerId">
-      </ac-map>
-    </div>
-
-    <div class="map" id="second-map-container">
-      <ac-map 
-        [mapId]="maps[1].id"
-        [sceneMode]="maps[1].sceneMode"
-        [containerId]="maps[1].containerId">
-      </ac-map>
-    </div>
-  </div>
-  <div class="row">
-    <div class="map" id="third-map-container" >
-      <ac-map 
-        [mapId]="maps[2].id"
-        [sceneMode]="maps[2].sceneMode"
-        [containerId]="maps[2].containerId">
-      </ac-map>
-    </div>
-
-    <div class="map" id="forth-map-container" >
-      <ac-map 
-        [mapId]="maps[3].id"
-        [sceneMode]="maps[3].sceneMode"
-        [containerId]="maps[3].containerId">
-      </ac-map>
-    </div>
-  </div>
+<div class="grid">
+    <app-screen *ngFor="let map of maps" class="map-container" [map]="map"></app-screen>
 </div>

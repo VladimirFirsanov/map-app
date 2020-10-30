@@ -1,0 +1,14 @@
+<div class="map" [ngClass]="{'active': active}">
+  <div class="side"></div>
+  <div class="map-container" [id]="map.containerId">
+    <ac-map 
+      [mapId]="map.id"
+      [sceneMode]="map.sceneMode"
+      [containerId]="map.containerId">
+      
+        <app-map-events (mouseMove)="toggleAction()"></app-map-events>
+    </ac-map>
+  </div>
+  <div class="side"></div>
+
+</div>
